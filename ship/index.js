@@ -86,13 +86,19 @@ Ship.prototype.moveForward = function() {
  * @param {number} - y = the Y position to move to on the grid
  */
 Ship.prototype.moveToPosition = function(x, y) {
+  // Only make changes to the ships X or Y coordinates if the new coordinates are not banned
   if (this.grid.checkPositionNotBanned(x, y)) {
-    if (this.grid.checkPositionIsOnGrid(x, y)) {
+    // Check that our new X and Y positions are larger or equal to 0
+    if (x >= 0 && y >= 0) {
       this.x = x
       this.y = y
-    } else {
+    }
+
+    // If the new position will cause the ship to fall off the grid we mark the ship as lost.
+    // We also add the ships last position to a list of banned positions
+    if (!this.grid.checkPositionIsOnGrid(x, y)) {
       this.lost = true
-      this.grid.addBannedPosition(x, y)
+      this.grid.addBannedPosition(this.x, this.y)
     }
   }
 }
