@@ -75,9 +75,13 @@ Ship.prototype.moveForward = function() {
  * @param {number} - y = the Y position to move to on the grid
  */
 Ship.prototype.moveToPosition = function(x, y) {
+  if (this.grid.checkPositionIsOnGrid(x, y)) {
     console.log('Moving ship to position', x, y)
     this.x = x
     this.y = y
+  } else {
+    // Handle not on grid error here
+  }
 }
 
 /**
