@@ -1,0 +1,11 @@
+{
+  "name": "stratum-five-coding-challenge-alex-mason",
+  "version": "1.0.0",
+  "description": "An implementation of the Stratum Five Coding Challenge",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Alexander Mason <alexgmason@gmail.com>",
+  "license": "ISC"
+}
