@@ -1,6 +1,7 @@
 const VALID_DIRECTIONS = require('../validDirections.js')
 
 function Ship(coordinates, instructions, grid) {
+  this.lost = false
   this.x = parseInt(coordinates[0])
   this.y = parseInt(coordinates[1])
   this.direction = coordinates[2]
@@ -17,7 +18,17 @@ Ship.prototype.run = function() {
     this.performInstruction(instruction, this.x, this.y)
   }.bind(this))
 
-  console.log(`SHIP OUTPUT: ${this.x < this.grid.width ? this.x : this.grid.width} ${this.y < this.grid.height ? this.y : this.grid.height} ${this.direction} ${this.lost ? 'LOST' : ''}`)
+  this.logOutput()
+}
+
+/**
+ * Log the position of a ship to the console
+ */
+Ship.prototype.logOutput = function() {
+  const xPosition = this.x < this.grid.width ? this.x : this.grid.width
+  const yPosition = this.y < this.grid.height ? this.y : this.grid.height
+
+  console.log(`${xPosition} ${yPosition} ${this.direction} ${this.lost ? 'LOST' : ''}`)
 }
 
 /**
@@ -45,7 +56,7 @@ Ship.prototype.changeDirection = function(direction) {
 }
 
 /**
- * Attempt to move the ship forward on the grid one position along its current direction
+ * Move the ship forward on the grid one position along its current direction
  */
 Ship.prototype.moveForward = function() {
   let x = this.x
@@ -75,12 +86,14 @@ Ship.prototype.moveForward = function() {
  * @param {number} - y = the Y position to move to on the grid
  */
 Ship.prototype.moveToPosition = function(x, y) {
-  if (this.grid.checkPositionIsOnGrid(x, y)) {
-    console.log('Moving ship to position', x, y)
-    this.x = x
-    this.y = y
-  } else {
-    // Handle not on grid error here
+  if (this.grid.checkPositionNotBanned(x, y)) {
+    if (this.grid.checkPositionIsOnGrid(x, y)) {
+      this.x = x
+      this.y = y
+    } else {
+      this.lost = true
+      this.grid.addBannedPosition(x, y)
+    }
   }
 }
 
@@ -89,20 +102,14 @@ Ship.prototype.moveToPosition = function(x, y) {
  * @param {string} - A string containing an instruction for a ship
  */
 Ship.prototype.performInstruction = function(instruction) {
-  console.log('instruction', instruction)
   switch(instruction) {
     case 'R':
-      console.log('Changing direction right')
-      
       this.changeDirection(1)
       break
     case 'L':
-      console.log('Changing direction left')
-
       this.changeDirection(-1)
       break
     case 'F':
-      console.log('Attempting to move ship forward')
       this.moveForward()
       break
   }
