@@ -2,6 +2,7 @@ const input = require('./input')
 const parse = require('./parse')
 
 const Grid = require('./Grid')
+const Ship = require('./Ship')
 
 function getInput() {
   input()
@@ -17,6 +18,15 @@ function getInput() {
     const grid = new Grid(gridData.width, gridData.height)
 
     console.log('grid', grid)
+
+    // Loop through each ship and run it's instructions
+    shipsData.forEach((shipData, i) => {
+      const ship = new Ship(shipData.coordinates, shipData.instructions, grid)
+
+      console.log('ship', ship)
+    })
+
+    
   })
 }
 
