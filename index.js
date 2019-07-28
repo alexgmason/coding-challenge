@@ -23,6 +23,7 @@ function getInput() {
     shipsData.forEach((shipData, i) => {
       const ship = new Ship(shipData.coordinates, shipData.instructions, grid)
 
+      ship.run()
       console.log('ship', ship)
     })
 
