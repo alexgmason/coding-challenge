@@ -24,7 +24,6 @@ function getInput() {
       const ship = new Ship(shipData.coordinates, shipData.instructions, grid)
 
       ship.run()
-      console.log('ship', ship)
     })
 
     

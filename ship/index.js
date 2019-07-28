@@ -45,6 +45,42 @@ Ship.prototype.changeDirection = function(direction) {
 }
 
 /**
+ * Attempt to move the ship forward on the grid one position along its current direction
+ */
+Ship.prototype.moveForward = function() {
+  let x = this.x
+  let y = this.y
+
+  switch(this.direction) {
+    case 'N':
+        y = y + 1
+      break
+    case 'E':
+        x = x + 1
+      break
+    case 'S':
+        y = y - 1
+      break
+    case 'W':
+        x = x - 1
+      break
+  }
+
+  this.moveToPosition(x, y)
+}
+
+/**
+ * Move the ship to position on the grid
+ * @param {number} - x = the X position to move to on the grid
+ * @param {number} - y = the Y position to move to on the grid
+ */
+Ship.prototype.moveToPosition = function(x, y) {
+    console.log('Moving ship to position', x, y)
+    this.x = x
+    this.y = y
+}
+
+/**
  * Perform an instruction upon a ship
  * @param {string} - A string containing an instruction for a ship
  */
@@ -62,7 +98,8 @@ Ship.prototype.performInstruction = function(instruction) {
       this.changeDirection(-1)
       break
     case 'F':
-      console.log('@TODO Move forward here')
+      console.log('Attempting to move ship forward')
+      this.moveForward()
       break
   }
 
