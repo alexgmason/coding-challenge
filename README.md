@@ -1,3 +1,24 @@
+# Alexander Mason - Coding Challenge
+
+
+
+## Prerequisites
+* You must have Node JS installed. This application has only been tested against node v12.7.0
+
+## How to run
+* Clone this repository to your machine
+* Navigate to the respository root folder in your terminal
+* Run `npm start`
+* When prompted enter or paste in your input grid and ship data (as formatted in the 'Sample input' section below)
+
+## Future improvements (Todos)
+* Don't exit application when a user input error occours. Instead, present the error to the user and allow them to re-enter their input
+* Add unit tests and e2e tests.
+
+####
+Below begins challenge instructions
+---
+
 # StratumFive - Coding Challenge
 
 ## Introduction
