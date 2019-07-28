@@ -10,7 +10,7 @@ function getInput() {
     try{
       const {gridData, shipsData} = parse(result)
 
-      // Create a new line to seperate input from the output
+      // Create a new line to separate input from the output
       console.log('\n')
   
       // Create a grid of the correct size

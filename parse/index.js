@@ -10,7 +10,7 @@ function splitInput(inputLine, splitBy = ' ') {
 }
 
 /**
- * Seperates ship instructions from each other. Delimited by an empty line
+ * Separates ship instructions from each other. Delimited by an empty line
  * @param {array} inputLines - An array of strings containing two numbers representing the width and height of the grid
  * @return {array} - An array where each item contains a nested array of ships instructions
  */
@@ -55,7 +55,7 @@ function getShipsData(inputLines, gridData) {
 }
 
 /**
- * Get the grid's width and height from a string
+ * Get the grids width and height from a string
  * @param {string} inputLine - A string containing two numbers representing the width and height of the grid
  * @return {{width: number, height: number}} - an object containing the parsed width and height of the grid
  */
