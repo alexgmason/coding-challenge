@@ -8,14 +8,9 @@ function size(gridSize) {
     throw new Error ('Grid size should be an array')
   }
 
-  // Check grid size array contains exactly 2 characters
-  if (gridSize.length !== 2) {
-    throw new Error ('Grid size should contain 2 parameters')
-  }
-
   // Check both of the grid size array items are number
-  if (typeof (gridSize[0] + gridSize[1]) !== 'number') {
-    throw new Error ('Grid size should only contain numbers')
+  if (isNaN(gridSize[0] + gridSize[1])) {
+    throw new Error ('Grid size should only contain two numbers')
   }
 
   // Check both of the grid size array items are less than 50

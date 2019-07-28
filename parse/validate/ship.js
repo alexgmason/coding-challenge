@@ -24,6 +24,9 @@ function isValidInstruction(instruction) {
  * @param {object} gridData - The gridData object containing width and height properties for the grid
  */
 function coordinates(input, gridData) {
+  const input0 = parseInt(input[0])
+  const input1 = parseInt(input[1])
+  const input2 = input[2]
   // Check coordinates is an array
   if (!Array.isArray(input)) {
     throw new Error ('Ship coordinates should be an array')
@@ -34,23 +37,23 @@ function coordinates(input, gridData) {
     throw new Error ('Ship coordinates should have a length of 3')
   }
 
-  if (typeof parseInt(input[0]) !== 'number') {
+  if (typeof input0 !== 'number' || isNaN(input0) ) {
     throw new Error ('First item in ship coordinates should be a number')
   }
 
-  if (typeof parseInt(input[1]) !== 'number') {
+  if (typeof input1 !== 'number' || isNaN(input1) ) {
     throw new Error ('Second item in ship coordinates should be a number')
   }
 
-  if (parseInt(input[0]) > gridData.width) {
+  if (input0 > gridData.width) {
     throw new Error ('First item in ship coordinates should not be bigger than the grid\'s width')
   }
 
-  if (parseInt(input[1]) > gridData.height) {
-    throw new Error ('First item in ship coordinates should not be bigger than the grid\'s height')
+  if (input1 > gridData.height) {
+    throw new Error ('Second item in ship coordinates should not be bigger than the grid\'s height')
   }
 
-  if (!isValidDirection(input[2])) {
+  if (!isValidDirection(input2)) {
     throw new Error ('Ships starting direction is not valid. Must be one of ' + VALID_DIRECTIONS.join(' '))
   }
 }
