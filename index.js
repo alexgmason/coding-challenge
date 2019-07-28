@@ -6,10 +6,10 @@ function getInput() {
   .then(result => {
     console.log('result', result)
 
-    const {gridInput, shipsInput} = parse(result)
+    const {gridData, shipsData} = parse(result)
 
-    console.log('gridInput', gridInput)
-    console.log('shipsInput', shipsInput)
+    console.log('gridData', gridData)
+    console.log('shipsData', shipsData)
   })
 }
 
